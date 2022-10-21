@@ -16,7 +16,7 @@ export interface Client {
 export declare namespace Client {
   interface Options {
     _origin: string;
-    authorization?: core.Supplier<string>;
+    _credentials?: core.Supplier<core.BasicAuth>;
   }
 }
 
@@ -28,7 +28,7 @@ export class Client implements Client {
       url: urlJoin(this.options._origin, "/public_key/gpg/"),
       method: "GET",
       headers: {
-        Authorization: await core.Supplier.get(this.options.authorization),
+        Authorization: core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(this.options._credentials)),
       },
     });
     if (response.ok) {
@@ -53,7 +53,7 @@ export class Client implements Client {
       url: urlJoin(this.options._origin, "/public_key/gpg/"),
       method: "POST",
       headers: {
-        Authorization: await core.Supplier.get(this.options.authorization),
+        Authorization: core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(this.options._credentials)),
       },
       body: schemas.key.create.Request.json(request),
     });
@@ -79,7 +79,7 @@ export class Client implements Client {
       url: urlJoin(this.options._origin, `/public_key/gpg/${request.name}`),
       method: "DELETE",
       headers: {
-        Authorization: await core.Supplier.get(this.options.authorization),
+        Authorization: core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(this.options._credentials)),
       },
     });
     if (response.ok) {

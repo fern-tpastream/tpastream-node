@@ -10,7 +10,7 @@ import { Client as PublicKeyServiceClient } from "./key/client/Client";
 export namespace Client {
   export interface Options {
     _origin: string;
-    authorization?: core.Supplier<string>;
+    _credentials?: core.Supplier<core.BasicAuth>;
   }
 }
 
@@ -22,7 +22,7 @@ export class Client {
   public get claims(): ClaimsServiceClient {
     return (this.#claims ??= new ClaimsServiceClient({
       _origin: this.options._origin,
-      authorization: this.options.authorization,
+      _credentials: this.options._credentials,
     }));
   }
 
@@ -31,7 +31,7 @@ export class Client {
   public get employers(): EmployersServiceClient {
     return (this.#employers ??= new EmployersServiceClient({
       _origin: this.options._origin,
-      authorization: this.options.authorization,
+      _credentials: this.options._credentials,
     }));
   }
 
@@ -40,7 +40,7 @@ export class Client {
   public get key(): PublicKeyServiceClient {
     return (this.#key ??= new PublicKeyServiceClient({
       _origin: this.options._origin,
-      authorization: this.options.authorization,
+      _credentials: this.options._credentials,
     }));
   }
 }

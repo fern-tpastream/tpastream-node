@@ -6,7 +6,7 @@ import * as core from "../../../core";
 import { TpastreamApi } from "../../..";
 
 export interface Request {
-  authorization?: core.Supplier<string>;
+  _credentials?: core.Supplier<core.BasicAuth>;
   /** Default value is 1 */
   page?: number;
   /** Default value is 10 */

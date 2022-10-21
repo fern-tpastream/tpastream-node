@@ -15,7 +15,7 @@ export interface Client {
 export declare namespace Client {
   interface Options {
     _origin: string;
-    authorization?: core.Supplier<string>;
+    _credentials?: core.Supplier<core.BasicAuth>;
   }
 }
 
@@ -38,7 +38,7 @@ export class Client implements Client {
       url: urlJoin(this.options._origin, "/claims/"),
       method: "GET",
       headers: {
-        Authorization: await core.Supplier.get(this.options.authorization),
+        Authorization: core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(this.options._credentials)),
       },
       queryParameters: queryParameters,
     });
@@ -64,7 +64,7 @@ export class Client implements Client {
       url: urlJoin(this.options._origin, `/claims/${request.claimMedicalId}`),
       method: "POST",
       headers: {
-        Authorization: await core.Supplier.get(this.options.authorization),
+        Authorization: core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(this.options._credentials)),
       },
     });
     if (response.ok) {
