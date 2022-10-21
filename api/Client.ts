@@ -4,11 +4,13 @@
 
 import * as core from "../core";
 import { Client as ClaimsServiceClient } from "./claims/client/Client";
+import { Client as EmployersServiceClient } from "./employers/client/Client";
+import { Client as PublicKeyServiceClient } from "./public-key/client/Client";
 
 export namespace Client {
   export interface Options {
     _origin: string;
-    _token?: core.Supplier<core.BearerToken>;
+    authorization?: core.Supplier<string>;
   }
 }
 
@@ -20,7 +22,25 @@ export class Client {
   public get claims(): ClaimsServiceClient {
     return (this.#claims ??= new ClaimsServiceClient({
       _origin: this.options._origin,
-      _token: this.options._token,
+      authorization: this.options.authorization,
+    }));
+  }
+
+  #employers: EmployersServiceClient | undefined;
+
+  public get employers(): EmployersServiceClient {
+    return (this.#employers ??= new EmployersServiceClient({
+      _origin: this.options._origin,
+      authorization: this.options.authorization,
+    }));
+  }
+
+  #publicKey: PublicKeyServiceClient | undefined;
+
+  public get publicKey(): PublicKeyServiceClient {
+    return (this.#publicKey ??= new PublicKeyServiceClient({
+      _origin: this.options._origin,
+      authorization: this.options.authorization,
     }));
   }
 }

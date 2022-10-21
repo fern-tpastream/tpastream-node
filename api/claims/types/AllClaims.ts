@@ -4,6 +4,6 @@
 
 import { TpastreamApi } from "../../..";
 
-export interface AllClaims {
-  data: TpastreamApi.claims.AllClaimsData;
+export interface AllClaims extends TpastreamApi.commons.Pageable {
+  data: TpastreamApi.claims.Claim;
 }

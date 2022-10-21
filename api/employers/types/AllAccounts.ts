@@ -4,4 +4,6 @@
 
 import { TpastreamApi } from "../../..";
 
-export type AllClaimsData = TpastreamApi.claims.Claim[];
+export interface AllAccounts extends TpastreamApi.commons.Pageable {
+  data: TpastreamApi.employers.Account;
+}

@@ -4,17 +4,144 @@
 
 import { TpastreamApi } from "../../..";
 import * as core from "../../../core";
+import * as schemas from "../..";
 
 export const Claim: core.schemas.ObjectSchema<Claim.Raw, TpastreamApi.claims.Claim> = core.schemas.object({
-  amountAllowed: core.schemas.property("amount_allowed", core.schemas.number()),
-  amountBilled: core.schemas.property("amount_billed", core.schemas.number()),
-  amountNotCovered: core.schemas.property("amount_not_covered", core.schemas.number()),
+  amountAllowed: core.schemas.property("amount_allowed", core.schemas.number().optional()),
+  amountBilled: core.schemas.property("amount_billed", core.schemas.number().optional()),
+  amountNotCovered: core.schemas.property("amount_not_covered", core.schemas.number().optional()),
+  amountPaid: core.schemas.property("amount_paid", core.schemas.number().optional()),
+  amountPaidOther: core.schemas.property("amount_paid_other", core.schemas.number().optional()),
+  checkDate: core.schemas.property("check_date", core.schemas.string().optional()),
+  checkNumber: core.schemas.property("check_number", core.schemas.string().optional()),
+  claimMedicalLines: core.schemas.property(
+    "claim_medical_lines",
+    core.schemas.list(core.schemas.lazyObject(() => schemas.claims.ClaimLine))
+  ),
+  coinsurancePatient: core.schemas.property("coinsurance_patient", core.schemas.number().optional()),
+  computedAmountAllowed: core.schemas.property("computed_amount_allowed", core.schemas.number().optional()),
+  computedAmountBilled: core.schemas.property("computed_amount_billed", core.schemas.number().optional()),
+  computedAmountPaid: core.schemas.property("computed_amount_paid", core.schemas.number().optional()),
+  computedCoinsurancePatient: core.schemas.property("computed_coinsurance_patient", core.schemas.number().optional()),
+  computedCopayment: core.schemas.property("computed_copayment", core.schemas.number().optional()),
+  computedPatientResponsibility: core.schemas.property(
+    "computed_patient_responsibility",
+    core.schemas.number().optional()
+  ),
+  computedReduction: core.schemas.property("computed_reduction", core.schemas.number().optional()),
+  copayment: core.schemas.number().optional(),
+  createddate: core.schemas.date().optional(),
+  dataobjectId: core.schemas.property("dataobject_id", core.schemas.number().optional()),
+  dateColumn: core.schemas.property("date_column", core.schemas.date().optional()),
+  dateOfService: core.schemas.property(
+    "date_of_service",
+    core.schemas.lazyObject(() => schemas.claims.DateRange).optional()
+  ),
+  discount: core.schemas.number().optional(),
+  eobDate: core.schemas.property("eob_date", core.schemas.string().optional()),
+  groupName: core.schemas.property("group_name", core.schemas.string().optional()),
+  groupNumber: core.schemas.property("group_number", core.schemas.string().optional()),
+  id: core.schemas.number().optional(),
+  incurredValue: core.schemas.property("incurred_value", core.schemas.number().optional()),
+  isIncomplete: core.schemas.property("is_incomplete", core.schemas.boolean()),
+  lastUpdatedStatus: core.schemas.property("last_updated_status", core.schemas.date().optional()),
+  members: core.schemas.list(core.schemas.lazyObject(() => schemas.claims.Member)).optional(),
+  modifieddate: core.schemas.date().optional(),
+  network: core.schemas.lazy(() => schemas.claims.Network).optional(),
+  patientAccountNumber: core.schemas.property("patient_account_number", core.schemas.string().optional()),
+  patientName: core.schemas.property("patient_name", core.schemas.string().optional()),
+  patientPayerNumber: core.schemas.property("patient_payer_number", core.schemas.string().optional()),
+  patientResponsibility: core.schemas.property("patient_responsibility", core.schemas.number().optional()),
+  policyHolder: core.schemas.property(
+    "policy_holder",
+    core.schemas.lazyObject(() => schemas.claims.PolicyHolder)
+  ),
+  processedOn: core.schemas.property("processed_on", core.schemas.string().optional()),
+  recrawlRequested: core.schemas.property("recrawl_requested", core.schemas.boolean().optional()),
+  reduction: core.schemas.number().optional(),
+  remarks: core.schemas.string().optional(),
+  serviceProvider: core.schemas.property("service_provider", core.schemas.string().optional()),
+  serviceProviderAddress: core.schemas.property("service_provider_address", core.schemas.string().optional()),
+  serviceProviderBillingAddress: core.schemas.property(
+    "service_provider_billing_address",
+    core.schemas.string().optional()
+  ),
+  serviceProviderBillingName: core.schemas.property("service_provider_billing_name", core.schemas.string().optional()),
+  serviceProviderBillingNpiNumber: core.schemas.property(
+    "service_provider_billing_npi_number",
+    core.schemas.number().optional()
+  ),
+  serviceProviderBillingNumber: core.schemas.property(
+    "service_provider_billing_number",
+    core.schemas.string().optional()
+  ),
+  serviceProviderBillingPhone: core.schemas.property(
+    "service_provider_billing_phone",
+    core.schemas.string().optional()
+  ),
+  serviceProviderNpiNumber: core.schemas.property("service_provider_npi_number", core.schemas.number().optional()),
+  serviceProviderNumber: core.schemas.property("service_provider_number", core.schemas.string().optional()),
+  status: core.schemas.lazy(() => schemas.claims.ClaimStatus).optional(),
+  type_: core.schemas.property("type", core.schemas.lazyObject(() => schemas.claims.ClaimType).optional()),
+  uuid: core.schemas.string().optional(),
+  vendorSystemId: core.schemas.property("vendor_system_id", core.schemas.string().optional()),
 });
 
 export declare namespace Claim {
   interface Raw {
-    amount_allowed: number;
-    amount_billed: number;
-    amount_not_covered: number;
+    amount_allowed?: number | null;
+    amount_billed?: number | null;
+    amount_not_covered?: number | null;
+    amount_paid?: number | null;
+    amount_paid_other?: number | null;
+    check_date?: string | null;
+    check_number?: string | null;
+    claim_medical_lines: schemas.claims.ClaimLine.Raw[];
+    coinsurance_patient?: number | null;
+    computed_amount_allowed?: number | null;
+    computed_amount_billed?: number | null;
+    computed_amount_paid?: number | null;
+    computed_coinsurance_patient?: number | null;
+    computed_copayment?: number | null;
+    computed_patient_responsibility?: number | null;
+    computed_reduction?: number | null;
+    copayment?: number | null;
+    createddate?: string | null;
+    dataobject_id?: number | null;
+    date_column?: string | null;
+    date_of_service?: schemas.claims.DateRange.Raw | null;
+    discount?: number | null;
+    eob_date?: string | null;
+    group_name?: string | null;
+    group_number?: string | null;
+    id?: number | null;
+    incurred_value?: number | null;
+    is_incomplete: boolean;
+    last_updated_status?: string | null;
+    members?: schemas.claims.Member.Raw[] | null;
+    modifieddate?: string | null;
+    network?: schemas.claims.Network.Raw | null;
+    patient_account_number?: string | null;
+    patient_name?: string | null;
+    patient_payer_number?: string | null;
+    patient_responsibility?: number | null;
+    policy_holder: schemas.claims.PolicyHolder.Raw;
+    processed_on?: string | null;
+    recrawl_requested?: boolean | null;
+    reduction?: number | null;
+    remarks?: string | null;
+    service_provider?: string | null;
+    service_provider_address?: string | null;
+    service_provider_billing_address?: string | null;
+    service_provider_billing_name?: string | null;
+    service_provider_billing_npi_number?: number | null;
+    service_provider_billing_number?: string | null;
+    service_provider_billing_phone?: string | null;
+    service_provider_npi_number?: number | null;
+    service_provider_number?: string | null;
+    status?: schemas.claims.ClaimStatus.Raw | null;
+    type?: schemas.claims.ClaimType.Raw | null;
+    uuid?: string | null;
+    vendor_system_id?: string | null;
   }
 }

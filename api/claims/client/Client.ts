@@ -9,12 +9,13 @@ import * as schemas from "../../../schemas";
 
 export interface Client {
   getAll(request: TpastreamApi.claims.getAll.Request): Promise<TpastreamApi.claims.getAll.Response>;
+  get_(request: TpastreamApi.claims.get_.Request): Promise<TpastreamApi.claims.get_.Response>;
 }
 
 export declare namespace Client {
   interface Options {
     _origin: string;
-    _token?: core.Supplier<core.BearerToken>;
+    authorization?: core.Supplier<string>;
   }
 }
 
@@ -35,7 +36,7 @@ export class Client implements Client {
       url: urlJoin(this.options._origin, "/claims/"),
       method: "GET",
       headers: {
-        Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options._token)),
+        Authorization: await core.Supplier.get(this.options.authorization),
       },
       queryParameters: queryParameters,
     });
@@ -43,6 +44,31 @@ export class Client implements Client {
       return {
         ok: true,
         body: schemas.claims.AllClaims.parse(response.body as schemas.claims.AllClaims.Raw),
+      };
+    }
+
+    return {
+      ok: false,
+      error: {
+        errorName: undefined,
+        content: response.error,
+        _visit: (visitor) => visitor._other(response.error),
+      },
+    };
+  }
+
+  public async get_(request: TpastreamApi.claims.get_.Request): Promise<TpastreamApi.claims.get_.Response> {
+    const response = await core.fetcher({
+      url: urlJoin(this.options._origin, `/claims/${request.claimMedicalId}`),
+      method: "POST",
+      headers: {
+        Authorization: await core.Supplier.get(this.options.authorization),
+      },
+    });
+    if (response.ok) {
+      return {
+        ok: true,
+        body: schemas.claims.Claim.parse(response.body as schemas.claims.Claim.Raw),
       };
     }
 
