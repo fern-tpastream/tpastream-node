@@ -5,13 +5,12 @@
 import { TpastreamApi } from "../../..";
 import * as core from "../../../core";
 
-export const PublicKey: core.schemas.ObjectSchema<PublicKey.Raw, TpastreamApi.publicKey.PublicKey> =
-  core.schemas.object({
-    content: core.schemas.string(),
-    expires: core.schemas.string(),
-    name: core.schemas.string(),
-    uuid: core.schemas.string(),
-  });
+export const PublicKey: core.schemas.ObjectSchema<PublicKey.Raw, TpastreamApi.key.PublicKey> = core.schemas.object({
+  content: core.schemas.string(),
+  expires: core.schemas.string(),
+  name: core.schemas.string(),
+  uuid: core.schemas.string(),
+});
 
 export declare namespace PublicKey {
   interface Raw {

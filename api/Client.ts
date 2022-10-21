@@ -5,7 +5,7 @@
 import * as core from "../core";
 import { Client as ClaimsServiceClient } from "./claims/client/Client";
 import { Client as EmployersServiceClient } from "./employers/client/Client";
-import { Client as PublicKeyServiceClient } from "./public-key/client/Client";
+import { Client as PublicKeyServiceClient } from "./key/client/Client";
 
 export namespace Client {
   export interface Options {
@@ -35,10 +35,10 @@ export class Client {
     }));
   }
 
-  #publicKey: PublicKeyServiceClient | undefined;
+  #key: PublicKeyServiceClient | undefined;
 
-  public get publicKey(): PublicKeyServiceClient {
-    return (this.#publicKey ??= new PublicKeyServiceClient({
+  public get key(): PublicKeyServiceClient {
+    return (this.#key ??= new PublicKeyServiceClient({
       _origin: this.options._origin,
       authorization: this.options.authorization,
     }));

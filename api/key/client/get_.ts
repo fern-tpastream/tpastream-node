@@ -5,7 +5,7 @@
 import { TpastreamApi } from "../../..";
 import * as core from "../../../core";
 
-export type Response = core.APIResponse<TpastreamApi.publicKey.PublicKey, TpastreamApi.publicKey.get_.Error>;
+export type Response = core.APIResponse<TpastreamApi.key.PublicKey, TpastreamApi.key.get_.Error>;
 export type Error = Error._Unknown;
 
 export declare namespace Error {

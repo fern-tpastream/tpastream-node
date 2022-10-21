@@ -8,9 +8,9 @@ import urlJoin from "url-join";
 import * as schemas from "../../../schemas";
 
 export interface Client {
-  get_(): Promise<TpastreamApi.publicKey.get_.Response>;
-  create(request: string): Promise<TpastreamApi.publicKey.create.Response>;
-  deleteKey(request: TpastreamApi.publicKey.deleteKey.Request): Promise<TpastreamApi.publicKey.deleteKey.Response>;
+  get_(): Promise<TpastreamApi.key.get_.Response>;
+  create(request: string): Promise<TpastreamApi.key.create.Response>;
+  deleteKey(request: TpastreamApi.key.deleteKey.Request): Promise<TpastreamApi.key.deleteKey.Response>;
 }
 
 export declare namespace Client {
@@ -23,7 +23,7 @@ export declare namespace Client {
 export class Client implements Client {
   constructor(private readonly options: Client.Options) {}
 
-  public async get_(): Promise<TpastreamApi.publicKey.get_.Response> {
+  public async get_(): Promise<TpastreamApi.key.get_.Response> {
     const response = await core.fetcher({
       url: urlJoin(this.options._origin, "/public_key/gpg/"),
       method: "GET",
@@ -34,7 +34,7 @@ export class Client implements Client {
     if (response.ok) {
       return {
         ok: true,
-        body: schemas.publicKey.PublicKey.parse(response.body as schemas.publicKey.PublicKey.Raw),
+        body: schemas.key.PublicKey.parse(response.body as schemas.key.PublicKey.Raw),
       };
     }
 
@@ -48,19 +48,19 @@ export class Client implements Client {
     };
   }
 
-  public async create(request: string): Promise<TpastreamApi.publicKey.create.Response> {
+  public async create(request: string): Promise<TpastreamApi.key.create.Response> {
     const response = await core.fetcher({
       url: urlJoin(this.options._origin, "/public_key/gpg/"),
       method: "POST",
       headers: {
         Authorization: await core.Supplier.get(this.options.authorization),
       },
-      body: schemas.publicKey.create.Request.json(request),
+      body: schemas.key.create.Request.json(request),
     });
     if (response.ok) {
       return {
         ok: true,
-        body: schemas.publicKey.PublicKey.parse(response.body as schemas.publicKey.PublicKey.Raw),
+        body: schemas.key.PublicKey.parse(response.body as schemas.key.PublicKey.Raw),
       };
     }
 
@@ -74,9 +74,7 @@ export class Client implements Client {
     };
   }
 
-  public async deleteKey(
-    request: TpastreamApi.publicKey.deleteKey.Request
-  ): Promise<TpastreamApi.publicKey.deleteKey.Response> {
+  public async deleteKey(request: TpastreamApi.key.deleteKey.Request): Promise<TpastreamApi.key.deleteKey.Response> {
     const response = await core.fetcher({
       url: urlJoin(this.options._origin, `/public_key/gpg/${request.name}`),
       method: "DELETE",
