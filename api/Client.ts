@@ -3,9 +3,10 @@
  */
 
 import * as core from "../core";
-import { Client as ClaimsServiceClient } from "./claims/client/Client";
-import { Client as EmployersServiceClient } from "./employers/client/Client";
+import { Client as ClaimsServiceClient } from "./claim/client/Client";
+import { Client as EmployersServiceClient } from "./employer/client/Client";
 import { Client as PublicKeyServiceClient } from "./key/client/Client";
+import { Client as MembersServiceClient } from "./member/client/Client";
 
 export namespace Client {
   export interface Options {
@@ -17,19 +18,19 @@ export namespace Client {
 export class Client {
   constructor(private readonly options: Client.Options) {}
 
-  #claims: ClaimsServiceClient | undefined;
+  #claim: ClaimsServiceClient | undefined;
 
-  public get claims(): ClaimsServiceClient {
-    return (this.#claims ??= new ClaimsServiceClient({
+  public get claim(): ClaimsServiceClient {
+    return (this.#claim ??= new ClaimsServiceClient({
       _origin: this.options._origin,
       _credentials: this.options._credentials,
     }));
   }
 
-  #employers: EmployersServiceClient | undefined;
+  #employer: EmployersServiceClient | undefined;
 
-  public get employers(): EmployersServiceClient {
-    return (this.#employers ??= new EmployersServiceClient({
+  public get employer(): EmployersServiceClient {
+    return (this.#employer ??= new EmployersServiceClient({
       _origin: this.options._origin,
       _credentials: this.options._credentials,
     }));
@@ -39,6 +40,15 @@ export class Client {
 
   public get key(): PublicKeyServiceClient {
     return (this.#key ??= new PublicKeyServiceClient({
+      _origin: this.options._origin,
+      _credentials: this.options._credentials,
+    }));
+  }
+
+  #member: MembersServiceClient | undefined;
+
+  public get member(): MembersServiceClient {
+    return (this.#member ??= new MembersServiceClient({
       _origin: this.options._origin,
       _credentials: this.options._credentials,
     }));

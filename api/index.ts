@@ -1,9 +1,11 @@
-export * as claims from "./claims";
-export * from "./claims/types";
+export * as claim from "./claim";
+export * from "./claim/types";
 export * as commons from "./commons";
 export * from "./commons/types";
-export * as employers from "./employers";
-export * from "./employers/types";
+export * as employer from "./employer";
+export * from "./employer/types";
 export * as key from "./key";
 export * from "./key/types";
+export * as member from "./member";
+export * from "./member/types";
 export * from "./Client";

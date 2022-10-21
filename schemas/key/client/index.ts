@@ -1,1 +1,2 @@
-export * as create from "./create";
+export * as createGpg from "./createGpg";
+export * as createRsa from "./createRsa";
