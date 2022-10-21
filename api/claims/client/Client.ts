@@ -8,8 +8,8 @@ import urlJoin from "url-join";
 import * as schemas from "../../../schemas";
 
 export interface Client {
-  getAll(request: TpastreamApi.claims.getAll.Request): Promise<TpastreamApi.claims.getAll.Response>;
-  get_(request: TpastreamApi.claims.get_.Request): Promise<TpastreamApi.claims.get_.Response>;
+  getAllClaims(request: TpastreamApi.claims.getAllClaims.Request): Promise<TpastreamApi.claims.getAllClaims.Response>;
+  getClaim(request: TpastreamApi.claims.getClaim.Request): Promise<TpastreamApi.claims.getClaim.Response>;
 }
 
 export declare namespace Client {
@@ -22,7 +22,9 @@ export declare namespace Client {
 export class Client implements Client {
   constructor(private readonly options: Client.Options) {}
 
-  public async getAll(request: TpastreamApi.claims.getAll.Request): Promise<TpastreamApi.claims.getAll.Response> {
+  public async getAllClaims(
+    request: TpastreamApi.claims.getAllClaims.Request
+  ): Promise<TpastreamApi.claims.getAllClaims.Response> {
     const queryParameters = new URLSearchParams();
     if (request.page != null) {
       queryParameters.append("page", request.page.toString());
@@ -57,7 +59,7 @@ export class Client implements Client {
     };
   }
 
-  public async get_(request: TpastreamApi.claims.get_.Request): Promise<TpastreamApi.claims.get_.Response> {
+  public async getClaim(request: TpastreamApi.claims.getClaim.Request): Promise<TpastreamApi.claims.getClaim.Response> {
     const response = await core.fetcher({
       url: urlJoin(this.options._origin, `/claims/${request.claimMedicalId}`),
       method: "POST",

@@ -12,7 +12,7 @@ export const Member: core.schemas.ObjectSchema<Member.Raw, TpastreamApi.claims.M
   firstName: core.schemas.property("first_name", core.schemas.string().optional()),
   id: core.schemas.number(),
   lastName: core.schemas.property("last_name", core.schemas.string().optional()),
-  systemKey: core.schemas.property("system_key", core.schemas.record(core.schemas.unknown(), core.schemas.string())),
+  systemKey: core.schemas.property("system_key", core.schemas.record(core.schemas.string(), core.schemas.string())),
 });
 
 export declare namespace Member {
@@ -22,6 +22,6 @@ export declare namespace Member {
     first_name?: string | null;
     id: number;
     last_name?: string | null;
-    system_key: Record<unknown, string>;
+    system_key: Record<string, string>;
   }
 }

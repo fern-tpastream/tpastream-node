@@ -8,7 +8,9 @@ import urlJoin from "url-join";
 import * as schemas from "../../../schemas";
 
 export interface Client {
-  getAll(request: TpastreamApi.employers.getAll.Request): Promise<TpastreamApi.employers.getAll.Response>;
+  getAllEmployers(
+    request: TpastreamApi.employers.getAllEmployers.Request
+  ): Promise<TpastreamApi.employers.getAllEmployers.Response>;
 }
 
 export declare namespace Client {
@@ -21,7 +23,9 @@ export declare namespace Client {
 export class Client implements Client {
   constructor(private readonly options: Client.Options) {}
 
-  public async getAll(request: TpastreamApi.employers.getAll.Request): Promise<TpastreamApi.employers.getAll.Response> {
+  public async getAllEmployers(
+    request: TpastreamApi.employers.getAllEmployers.Request
+  ): Promise<TpastreamApi.employers.getAllEmployers.Response> {
     const queryParameters = new URLSearchParams();
     if (request.page != null) {
       queryParameters.append("page", request.page.toString());

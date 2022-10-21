@@ -11,9 +11,13 @@ export interface Request {
   page?: number;
   /** Default value is 10 */
   perPage?: number;
+  employerId: number;
 }
 
-export type Response = core.APIResponse<TpastreamApi.claims.AllClaims, TpastreamApi.claims.getAll.Error>;
+export type Response = core.APIResponse<
+  TpastreamApi.employers.AllAccounts,
+  TpastreamApi.employers.getAllEmployers.Error
+>;
 export type Error = Error._Unknown;
 
 export declare namespace Error {

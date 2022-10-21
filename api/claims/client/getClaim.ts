@@ -10,7 +10,7 @@ export interface Request {
   claimMedicalId: number;
 }
 
-export type Response = core.APIResponse<TpastreamApi.claims.Claim, TpastreamApi.claims.get_.Error>;
+export type Response = core.APIResponse<TpastreamApi.claims.Claim, TpastreamApi.claims.getClaim.Error>;
 export type Error = Error._Unknown;
 
 export declare namespace Error {

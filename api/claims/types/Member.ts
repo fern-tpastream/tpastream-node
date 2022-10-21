@@ -10,5 +10,5 @@ export interface Member {
   firstName?: string;
   id: number;
   lastName?: string;
-  systemKey: Record<unknown, string>;
+  systemKey: Record<string, string>;
 }
