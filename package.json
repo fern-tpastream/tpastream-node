@@ -1,6 +1,6 @@
 {
     "name": "@fern-api/tpastream",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "repository": "https://github.com/fern-tpastream/tpastream-node",
     "main": "./index.js",
     "types": "./index.d.ts",
