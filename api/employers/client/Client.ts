@@ -3,14 +3,14 @@
  */
 
 import * as core from "../../../core";
-import { TpastreamApi } from "../../..";
+import { TpaStreamApi } from "../../..";
 import urlJoin from "url-join";
 import * as schemas from "../../../schemas";
 
 export interface Client {
   getAllEmployers(
-    request: TpastreamApi.employers.getAllEmployers.Request
-  ): Promise<TpastreamApi.employers.getAllEmployers.Response>;
+    request: TpaStreamApi.employers.getAllEmployers.Request
+  ): Promise<TpaStreamApi.employers.getAllEmployers.Response>;
 }
 
 export declare namespace Client {
@@ -24,8 +24,8 @@ export class Client implements Client {
   constructor(private readonly options: Client.Options) {}
 
   public async getAllEmployers(
-    request: TpastreamApi.employers.getAllEmployers.Request
-  ): Promise<TpastreamApi.employers.getAllEmployers.Response> {
+    request: TpaStreamApi.employers.getAllEmployers.Request
+  ): Promise<TpaStreamApi.employers.getAllEmployers.Response> {
     const queryParameters = new URLSearchParams();
     if (request.page != null) {
       queryParameters.append("page", request.page.toString());

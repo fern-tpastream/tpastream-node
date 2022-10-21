@@ -3,7 +3,7 @@
  */
 
 import * as core from "../../../core";
-import { TpastreamApi } from "../../..";
+import { TpaStreamApi } from "../../..";
 
 export interface Request {
   _credentials?: core.Supplier<core.BasicAuth>;
@@ -15,8 +15,8 @@ export interface Request {
 }
 
 export type Response = core.APIResponse<
-  TpastreamApi.employers.AllAccounts,
-  TpastreamApi.employers.getAllEmployers.Error
+  TpaStreamApi.employers.AllAccounts,
+  TpaStreamApi.employers.getAllEmployers.Error
 >;
 export type Error = Error._Unknown;
 

@@ -3,14 +3,14 @@
  */
 
 import * as core from "../../../core";
-import { TpastreamApi } from "../../..";
+import { TpaStreamApi } from "../../..";
 
 export interface Request {
   _credentials?: core.Supplier<core.BasicAuth>;
   claimMedicalId: number;
 }
 
-export type Response = core.APIResponse<TpastreamApi.claims.Claim, TpastreamApi.claims.getClaim.Error>;
+export type Response = core.APIResponse<TpaStreamApi.claims.Claim, TpaStreamApi.claims.getClaim.Error>;
 export type Error = Error._Unknown;
 
 export declare namespace Error {

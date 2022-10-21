@@ -3,14 +3,14 @@
  */
 
 import * as core from "../../../core";
-import { TpastreamApi } from "../../..";
+import { TpaStreamApi } from "../../..";
 
 export interface Request {
   _credentials?: core.Supplier<core.BasicAuth>;
   name: string;
 }
 
-export type Response = core.APIResponse<void, TpastreamApi.key.deleteKey.Error>;
+export type Response = core.APIResponse<void, TpaStreamApi.key.deleteKey.Error>;
 export type Error = Error._Unknown;
 
 export declare namespace Error {

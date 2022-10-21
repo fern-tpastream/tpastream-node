@@ -1,1 +1,1 @@
-import { TpastreamApi } from "@fern-api/tpastream";
+import { TpaStreamApi } from "@fern-api/tpastream";

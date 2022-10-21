@@ -1,1 +1,1 @@
-export * as TpastreamApi from "./api";
+export * as TpaStreamApi from "./api";

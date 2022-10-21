@@ -3,7 +3,7 @@
  */
 
 import * as core from "../../../core";
-import { TpastreamApi } from "../../..";
+import { TpaStreamApi } from "../../..";
 
 export interface Request {
   _credentials?: core.Supplier<core.BasicAuth>;
@@ -13,7 +13,7 @@ export interface Request {
   perPage?: number;
 }
 
-export type Response = core.APIResponse<TpastreamApi.claims.AllClaims, TpastreamApi.claims.getAllClaims.Error>;
+export type Response = core.APIResponse<TpaStreamApi.claims.AllClaims, TpaStreamApi.claims.getAllClaims.Error>;
 export type Error = Error._Unknown;
 
 export declare namespace Error {
