@@ -6,7 +6,7 @@ import { TpaStreamApi } from "../../..";
 import * as core from "../../../core";
 import * as serializers from "../..";
 
-export const Member: core.schemas.ObjectSchema<Member.Raw, TpaStreamApi.member.Member> = core.schemas.object({
+export const Member: core.schemas.ObjectSchema<Member.Raw, TpaStreamApi.employer.Member> = core.schemas.object({
   email: core.schemas.string().optional(),
   employer: core.schemas.lazyObject(() => serializers.employer.Employer),
   firstName: core.schemas.property("first_name", core.schemas.string().optional()),

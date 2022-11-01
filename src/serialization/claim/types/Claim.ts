@@ -45,7 +45,7 @@ export const Claim: core.schemas.ObjectSchema<Claim.Raw, TpaStreamApi.claim.Clai
   incurredValue: core.schemas.property("incurred_value", core.schemas.number().optional()),
   isIncomplete: core.schemas.property("is_incomplete", core.schemas.boolean()),
   lastUpdatedStatus: core.schemas.property("last_updated_status", core.schemas.date().optional()),
-  members: core.schemas.list(core.schemas.lazyObject(() => serializers.member.Member)).optional(),
+  members: core.schemas.list(core.schemas.lazyObject(() => serializers.employer.Member)).optional(),
   modifieddate: core.schemas.date().optional(),
   network: core.schemas.lazy(() => serializers.claim.Network).optional(),
   patientAccountNumber: core.schemas.property("patient_account_number", core.schemas.string().optional()),
@@ -118,7 +118,7 @@ export declare namespace Claim {
     incurred_value?: number | null;
     is_incomplete: boolean;
     last_updated_status?: string | null;
-    members?: serializers.member.Member.Raw[] | null;
+    members?: serializers.employer.Member.Raw[] | null;
     modifieddate?: string | null;
     network?: serializers.claim.Network.Raw | null;
     patient_account_number?: string | null;

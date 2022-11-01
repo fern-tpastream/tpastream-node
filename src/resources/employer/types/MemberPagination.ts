@@ -4,6 +4,6 @@
 
 import { TpaStreamApi } from "../../..";
 
-export interface AllAccounts extends TpaStreamApi.commons.Pageable {
-  data: TpaStreamApi.employer.Account;
+export interface MemberPagination extends TpaStreamApi.commons.Pageable {
+  data: TpaStreamApi.employer.Member;
 }

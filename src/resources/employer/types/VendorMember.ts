@@ -4,6 +4,7 @@
 
 import { TpaStreamApi } from "../../..";
 
-export interface AllMembers extends TpaStreamApi.commons.Pageable {
-  data: TpaStreamApi.employer.Member;
+export interface VendorMember {
+  key: string;
+  vendorTenant: TpaStreamApi.employer.VendorTenant;
 }

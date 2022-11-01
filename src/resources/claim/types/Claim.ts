@@ -43,7 +43,7 @@ export interface Claim {
   isIncomplete: boolean;
   /** Used as an indicator of when the last substantial change happened to this claim. If this date gets updated, we consider it necessary to re-send the claim for processing (in data exports) / flag it as "unread" in TPA Stream / etc. Typically this date gets updated when the patient_responsibility or status changes, or otherwise when is_incomplete changes to True. */
   lastUpdatedStatus?: Date;
-  members?: TpaStreamApi.member.Member[];
+  members?: TpaStreamApi.employer.Member[];
   modifieddate?: Date;
   network?: TpaStreamApi.claim.Network;
   /** Patient Account Number for Service Provider (used for payments) */

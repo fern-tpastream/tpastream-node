@@ -5,16 +5,16 @@
 import { TpaStreamApi } from "../../..";
 import * as core from "../../../core";
 
-export const Employer: core.schemas.ObjectSchema<Employer.Raw, TpaStreamApi.employer.Employer> = core.schemas.object({
+export const Vendor: core.schemas.ObjectSchema<Vendor.Raw, TpaStreamApi.employer.Vendor> = core.schemas.object({
+  code: core.schemas.string(),
   id: core.schemas.number().optional(),
   name: core.schemas.string(),
-  reimbursementPolicy: core.schemas.property("reimbursement_policy", core.schemas.unknown()),
 });
 
-export declare namespace Employer {
+export declare namespace Vendor {
   interface Raw {
+    code: string;
     id?: number | null;
     name: string;
-    reimbursement_policy?: unknown;
   }
 }

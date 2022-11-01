@@ -13,7 +13,10 @@ export interface Request {
   employerId: number;
 }
 
-export type Response = core.APIResponse<TpaStreamApi.employer.AllAccounts, TpaStreamApi.employer.getAllEmployers.Error>;
+export type Response = core.APIResponse<
+  TpaStreamApi.employer.MemberPagination,
+  TpaStreamApi.employer.getAllMembers.Error
+>;
 export type Error = Error._Unknown;
 
 export declare namespace Error {

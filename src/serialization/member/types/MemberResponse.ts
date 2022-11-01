@@ -8,11 +8,11 @@ import * as serializers from "../..";
 
 export const MemberResponse: core.schemas.ObjectSchema<MemberResponse.Raw, TpaStreamApi.member.MemberResponse> =
   core.schemas.object({
-    data: core.schemas.lazyObject(() => serializers.member.Member),
+    data: core.schemas.lazyObject(() => serializers.employer.Member),
   });
 
 export declare namespace MemberResponse {
   interface Raw {
-    data: serializers.member.Member.Raw;
+    data: serializers.employer.Member.Raw;
   }
 }

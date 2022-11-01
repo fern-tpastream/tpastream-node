@@ -5,5 +5,5 @@
 import { TpaStreamApi } from "../../..";
 
 export interface MemberResponse {
-  data: TpaStreamApi.member.Member;
+  data: TpaStreamApi.employer.Member;
 }

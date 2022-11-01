@@ -20,9 +20,9 @@ export declare namespace Client {
 export class Client {
   constructor(private readonly options: Client.Options) {}
 
-  public async getAllEmployers(
-    request: TpaStreamApi.employer.getAllEmployers.Request
-  ): Promise<TpaStreamApi.employer.getAllEmployers.Response> {
+  public async getAllMembers(
+    request: TpaStreamApi.employer.getAllMembers.Request
+  ): Promise<TpaStreamApi.employer.getAllMembers.Response> {
     const queryParameters = new URLSearchParams();
     if (request.page != null) {
       queryParameters.append("page", request.page.toString());
@@ -46,7 +46,7 @@ export class Client {
     if (response.ok) {
       return {
         ok: true,
-        body: serializers.employer.AllAccounts.parse(response.body as serializers.employer.AllAccounts.Raw),
+        body: serializers.employer.MemberPagination.parse(response.body as serializers.employer.MemberPagination.Raw),
       };
     }
 

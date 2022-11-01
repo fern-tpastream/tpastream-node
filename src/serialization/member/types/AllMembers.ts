@@ -8,12 +8,12 @@ import * as serializers from "../..";
 
 export const AllMembers: core.schemas.ObjectSchema<AllMembers.Raw, TpaStreamApi.member.AllMembers> = core.schemas
   .object({
-    data: core.schemas.lazyObject(() => serializers.member.Member),
+    data: core.schemas.lazyObject(() => serializers.employer.Member),
   })
   .extend(core.schemas.lazyObject(() => serializers.commons.Pageable));
 
 export declare namespace AllMembers {
   interface Raw extends serializers.commons.Pageable.Raw {
-    data: serializers.member.Member.Raw;
+    data: serializers.employer.Member.Raw;
   }
 }
