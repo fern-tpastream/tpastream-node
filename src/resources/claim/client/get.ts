@@ -6,13 +6,10 @@ import { TpaStreamApi } from "../../..";
 import * as core from "../../../core";
 
 export interface Request {
-  /** Default value is 1 */
-  page?: number;
-  /** Default value is 10 */
-  perPage?: number;
+  claimMedicalId: number;
 }
 
-export type Response = core.APIResponse<TpaStreamApi.claim.AllClaims, TpaStreamApi.claim.getAllClaims.Error>;
+export type Response = core.APIResponse<TpaStreamApi.claim.Claim, TpaStreamApi.claim.get.Error>;
 export type Error = Error._Unknown;
 
 export declare namespace Error {

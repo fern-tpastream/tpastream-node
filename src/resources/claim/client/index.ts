@@ -1,2 +1,2 @@
-export * as getAllClaims from "./getAllClaims";
-export * as getClaim from "./getClaim";
+export * as getAll from "./getAll";
+export * as get from "./get";

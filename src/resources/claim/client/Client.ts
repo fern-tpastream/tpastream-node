@@ -20,9 +20,7 @@ export declare namespace Client {
 export class Client {
   constructor(private readonly options: Client.Options) {}
 
-  public async getAllClaims(
-    request: TpaStreamApi.claim.getAllClaims.Request
-  ): Promise<TpaStreamApi.claim.getAllClaims.Response> {
+  public async getAll(request: TpaStreamApi.claim.getAll.Request): Promise<TpaStreamApi.claim.getAll.Response> {
     const queryParameters = new URLSearchParams();
     if (request.page != null) {
       queryParameters.append("page", request.page.toString());
@@ -57,7 +55,7 @@ export class Client {
     };
   }
 
-  public async getClaim(request: TpaStreamApi.claim.getClaim.Request): Promise<TpaStreamApi.claim.getClaim.Response> {
+  public async get(request: TpaStreamApi.claim.get.Request): Promise<TpaStreamApi.claim.get.Response> {
     const response = await core.fetcher({
       url: urlJoin(
         this.options.environment ?? environments.Environment.Production,
