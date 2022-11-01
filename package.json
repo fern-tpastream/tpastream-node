@@ -1,6 +1,6 @@
 {
     "name": "@fern-api/tpastream",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "repository": "https://github.com/fern-tpastream/tpastream-node",
     "files": [
         "core",
