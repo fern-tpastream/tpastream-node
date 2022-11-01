@@ -4,23 +4,14 @@
 
 ## Documentation
 
-API documentation is available at <{docs_url}>.
+API documentation is available at <https://tpastream.mintlify.com/getting-started/connecting-health-api>.
 
 ## Usage
 
+Check out the sample app in your browser [here](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-xsvkgg?file=app.ts&view=editor) using StackBlitz.
+
 ```typescript
 import { TODO } from "TODO";
-
-...
-
-```
-
-## Sample app
-
-Check out the [sample app](.sample-app/app.ts) which consumes this SDK!
-
-```bash
-export {COMPANY}_TOKEN=...
 
 ...
 
